@@ -8,7 +8,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useContext } from "react";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
-export const Login=()=>{
+export const Login=({navigation})=>{
   const [email,setemail]=useState('');
   const [Password,setpassword]=useState('');
   const {onLogin,error} = useContext(AuthenticationContext);
@@ -36,10 +36,21 @@ export const Login=()=>{
         onChangeText={(text)=>{
             setpassword(text);
         }} />
+        {error && (
+            <Text style={{color:'red',alignSelf:'center',fontSize:14,marginTop:20,}}> {error}</Text>
+          
+          
+        )}
         <TouchableOpacity onPress={() => onLogin(email, Password)} >
         <View style={styles.button}>
             <Text style={{alignSelf:'center',marginTop:15,fontSize:20,}}> Sign In </Text>
         </View>
+
+        
+        </TouchableOpacity>
+        <Text style={{fontSize:20,alignSelf:'center',marginTop:20,}}>Don't Have an Account?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")} >
+        <Text style={{fontSize:20,alignSelf:'center',color:'green'}}> Create One </Text>
         </TouchableOpacity>
         </View>
         </SafeAreaView>
@@ -65,6 +76,6 @@ const styles=StyleSheet.create({
          backgroundColor:'#DF6249',
          alignSelf:'center',
          borderRadius:10,
-         marginTop:80,
+         marginTop:60,
     }
 })

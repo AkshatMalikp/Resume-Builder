@@ -8,7 +8,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 
-export const Register=()=>{
+export const Register=({navigation})=>{
   const [email,setemail]=useState('');
   const [Password,setpassword]=useState('');
   const [RePassword,setrepassword]=useState('');
@@ -39,14 +39,29 @@ export const Register=()=>{
             setpassword(text);
         }} />
         
-        <TextInput placeholder="Re - Enter Password" style={{marginTop:20, ...styles.input}} onChangeText={(text)=>{
+        <TextInput placeholder="Re - Enter Password" 
+        value={RePassword}
+        textContentType="password"
+        secureTextEntry
+        autoCapitalize="none"
+        style={{marginTop:20, ...styles.input}} onChangeText={(text)=>{
             setrepassword(text);
         }} />
+        {error && (
+            <Text style={{color:'red',alignSelf:'center',fontSize:14,marginTop:20,}}> {error}</Text>
+          
+          
+        )}
         <TouchableOpacity 
         onPress={() => onRegister(email, Password)}>
         <View style={styles.button}>
             <Text style={{alignSelf:'center',marginTop:15,fontSize:20,}}> Sign Up </Text>
         </View>
+        </TouchableOpacity>
+
+        <Text style={{fontSize:20,alignSelf:'center',marginTop:20,}}>Already Have One?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")} >
+        <Text style={{fontSize:20,alignSelf:'center',color:'green'}}> Log In </Text>
         </TouchableOpacity>
         </View>
         </SafeAreaView>
@@ -72,6 +87,6 @@ const styles=StyleSheet.create({
          backgroundColor:'#DF6249',
          alignSelf:'center',
          borderRadius:10,
-         marginTop:80,
+         marginTop:40,
     }
 })
