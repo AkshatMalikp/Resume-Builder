@@ -2,9 +2,9 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from './src/infrastructure/navigation';
-import * as firebase from "firebase";
-import { AuthenticationContextProvider } from './src/services/authentication/authentication.context';
 
+import { AuthenticationContextProvider } from './src/services/authentication/authentication.context';
+import * as firebase from "firebase";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDbC0yGDiQYLvWQ3TBfSnaUJ0UqZynvLMU",
