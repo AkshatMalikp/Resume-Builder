@@ -4,9 +4,9 @@ const Stack=createStackNavigator();
 
 import { Home } from "../../components/MainHome/Home";
 import { ContactDetails } from "../../components/OptionScreens/ContactDetails";
-import { PersonalDetails } from "../../components/OptionScreens/PersonalDetails";
+import PersonalDetails from "../../components/OptionScreens/PersonalDetails";
 import { Education } from "../../components/OptionScreens/Education";
-import { Skills } from "../../components/OptionScreens/Skills";
+import Skills from "../../components/OptionScreens/Skills";
 import { Trainings } from "../../components/OptionScreens/Trainings";
 import { Internships } from "../../components/OptionScreens/Internships";
 import { Projects } from "../../components/OptionScreens/Projects";

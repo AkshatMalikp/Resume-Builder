@@ -6,10 +6,10 @@ import { OptionCard } from "./Option";
 export const Home=({navigation})=>{
     return(
         <SafeAreaView>
-            <Text style={{alignSelf:'center',marginTop:20,}}>Enter All The Details
+            <Text style={{alignSelf:'center',marginTop:20,fontSize:20,}}>Enter All The Details
 
             </Text>
-            <View style={{marginTop:40,marginBottom:175,}}>
+            <View style={{marginTop:40,marginBottom:75,}}>
             <ScrollView>
                 <TouchableOpacity onPress={()=>{
                     navigation.navigate('ContactDetails')

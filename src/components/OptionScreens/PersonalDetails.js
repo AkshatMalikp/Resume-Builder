@@ -3,19 +3,35 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Text,View,TextInput, TouchableOpacityBase, } from "react-native";
 import { StyleSheet } from "react-native";
 import { useState } from "react";
-
+import { ADD_PERSONAL_DETAILS,GET_PERSONAL_DETAILS } from "../../actions/Type";
+import { useDispatch,useSelector } from "react-redux";
 import { TouchableOpacity } from "react-native";
-export const PersonalDetails=()=>{
+import { connect } from "react-redux";
+import { add_personal_details,get_personal_details } from "../../actions";
+import { useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
+
+const PersonalDetails=(props)=>{
+    const navigation=useNavigation();
     const [fname,setFname]=useState("")
     const [lname,setLname]=useState("")
     const [email,setemail]=useState("")
     const [phone,setPnum]=useState("")
-    const Presshandler=()=>{
-       console.log(fname);
-       console.log(lname);
-       console.log(email);
-       console.log(phone);
+    const dispatch = useDispatch();
+    const pPresshandler=()=>{
+        dispatch(add_personal_details('FirstName',fname));
+
+        dispatch(add_personal_details('LastName',lname));
+
+        dispatch(add_personal_details('email',email));
+   
+        dispatch(add_personal_details('Phone',phone));
+        console.log(props);
+        navigation.navigate("Skills")
     }
+   
+    useEffect(()=>{
+    })
     return(
         <SafeAreaView>
             <View style={{}}>
@@ -69,7 +85,7 @@ export const PersonalDetails=()=>{
       />
       </View>
 
-      <TouchableOpacity onPress={Presshandler()} style={{borderWidth:0.5,margin:20,borderRadius:10,justifyContent:'center',alignItems:'center',width:'85%',
+      <TouchableOpacity onPress={pPresshandler} style={{borderWidth:0.5,margin:20,borderRadius:10,justifyContent:'center',alignItems:'center',width:'85%',
          height:60,
          backgroundColor:'#DF6249',alignSelf:'center'}}>
           <Text style={{fontSize:20,}}>
@@ -83,7 +99,32 @@ export const PersonalDetails=()=>{
         </SafeAreaView>
     )
 }
-
+const mapStateToProps = (state) =>{
+    const {
+  
+      FirstName,
+      LastName,
+      email,
+      Phone,
+      
+  
+    } = state.variables;
+    return {
+        
+      FirstName,
+      LastName,
+      email,
+      Phone,
+  
+    };
+  }
+  export default connect( mapStateToProps, {
+  
+    add_personal_details,
+    get_personal_details
+  
+  } )( PersonalDetails );
+  
 
 const styles=StyleSheet.create({
 

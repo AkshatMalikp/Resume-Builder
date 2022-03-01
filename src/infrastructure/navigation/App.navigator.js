@@ -8,6 +8,9 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator=()=> {
   return (
     <Tab.Navigator
+    screenOptions={{
+      headerShown: false
+    }}
     tabBarOptions={{
       showLabel: false,
       style:{
