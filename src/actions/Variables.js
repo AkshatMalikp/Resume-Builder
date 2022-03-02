@@ -1,6 +1,6 @@
 import { GET_PERSONAL_DETAILS } from "./Type";
 import { ADD_PERSONAL_DETAILS } from "./Type";
-
+import { ADD_TO_ARRAY } from "./Type";
 export const add_personal_details = (key,value) => {
     return ({
       
@@ -16,5 +16,13 @@ export const get_personal_details = () => {
       
       
     });
+}
+export const add_to_array = (key,value) => {
+  return ({
+    type:ADD_TO_ARRAY,
+    payload:{key,value}
+    
+    
+  });
 }
 

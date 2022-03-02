@@ -7,6 +7,7 @@ import { TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 import { add_personal_details,get_personal_details } from "../../actions";
 var DATA = [
     "hello",
@@ -14,6 +15,7 @@ var DATA = [
   ];
   
 const Skills=(props)=>{
+  const navigation=useNavigation();
     const dispatch = useDispatch();
     const [skill,setSkill]=useState(null);
     const presshandler=()=>{
@@ -23,8 +25,12 @@ const Skills=(props)=>{
 
     }
     const presshandler2=()=>{
+      var b=skill;
+      DATA.push(b)
+      setSkill(null);
+
             dispatch(add_personal_details('skills',DATA));
-            
+            navigation.navigate("Trainings")
    
        }
     const renderItem=({item})=>(

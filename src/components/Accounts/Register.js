@@ -48,7 +48,7 @@ export const Register=({navigation})=>{
             setrepassword(text);
         }} />
         {error && (
-            <Text style={{color:'red',alignSelf:'center',fontSize:14,marginTop:20,}}> {error}</Text>
+            <Text style={{color:'red',alignSelf:'center',fontSize:14,marginTop:20,width:'80%',alignSelf:'center'}}> {error}</Text>
           
           
         )}
